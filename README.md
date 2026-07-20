@@ -1,30 +1,29 @@
 # 🔩 AI-Based Fastener Detection for SolidWorks Assemblies using YOLOv8
 
-An AI-powered computer vision project that detects and classifies mechanical fasteners in SolidWorks assembly images using the YOLOv8 object detection model. The system identifies components such as **bolts, nuts, washers, and locating pins**, making it useful for automated inspection and manufacturing workflows.
+An AI-powered computer vision project that detects and classifies mechanical fasteners from SolidWorks assembly images using the YOLOv8 object detection model. The system automatically identifies components such as **Bolts, Nuts, Washers, and Locating Pins**, enabling faster and more reliable inspection of mechanical assemblies.
 
 ---
 
-## 📌 Project Overview
+## 📌 Overview
 
-Manual inspection of mechanical assemblies is time-consuming and prone to human error. This project automates the detection of fasteners from SolidWorks assembly images using a deep learning-based object detection pipeline.
+Mechanical assembly inspection is often performed manually, making it time-consuming and susceptible to human error. This project leverages **YOLOv8** to automate the detection and counting of common fasteners in SolidWorks assembly images.
 
-The model was trained on a custom dataset and performs inference on new assembly images, generating predictions along with annotated output images.
+The trained model predicts the location and class of each fastener and generates an annotated output image for visualization.
 
 ---
 
 ## ✨ Features
 
-- Detects multiple fastener types
+- Detects multiple fastener types in a single image
 - YOLOv8-based object detection
-- Custom dataset preprocessing
-- Automatic feature extraction
-- Prediction on unseen images
+- Automatic bounding box generation
+- Fast inference on new images
 - Generates annotated output images
-- Lightweight inference pipeline
+- Simple prediction pipeline
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technologies Used
 
 - Python
 - YOLOv8 (Ultralytics)
@@ -32,7 +31,6 @@ The model was trained on a custom dataset and performs inference on new assembly
 - OpenCV
 - NumPy
 - Pandas
-- Scikit-learn
 
 ---
 
@@ -41,17 +39,15 @@ The model was trained on a custom dataset and performs inference on new assembly
 ```
 solidworks-ai-hackathon/
 │
-├── saved_models/
-│   ├── finalbest.pt
-│   └── yolo_corrector.pkl
-│
 ├── custom_test/
 │   └── image.png
 │
+├── saved_models/
+│   └── finalbest.pt
+│
+├── prepare_yolo_data.py
 ├── build_yolo_features.py
 ├── clean_yolo_features.py
-├── prepare_yolo_data.py
-├── predict.py
 ├── predict_yolo.py
 ├── yolo_submit.py
 │
@@ -70,12 +66,12 @@ solidworks-ai-hackathon/
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/solidworks-ai-hackathon.git
+git clone https://github.com/poojapandian6/solidworks-ai-hackathon.git
 
 cd solidworks-ai-hackathon
 ```
 
-Install dependencies:
+Install the required libraries:
 
 ```bash
 pip install -r requirements.txt
@@ -83,17 +79,38 @@ pip install -r requirements.txt
 
 ---
 
+## 📦 Model
+
+The trained YOLO model should be placed inside:
+
+```
+saved_models/
+```
+
+Expected file:
+
+```
+saved_models/
+    finalbest.pt
+```
+
+> If the model file is not included in this repository, place your trained model in the folder above before running inference.
+
+---
+
 ## 🚀 Running Prediction
 
-Place the test image inside the `custom_test` folder.
+Place the test image inside:
+
+```
+custom_test/image.png
+```
 
 Run:
 
 ```bash
 python predict_yolo.py
 ```
-
-The model predicts all detected fasteners and saves an annotated output image.
 
 Example output:
 
@@ -120,57 +137,66 @@ Saved output image as yolo_output.png
 
 ---
 
-## 🧠 Workflow
+## 🔄 Workflow
 
 ```
 SolidWorks Assembly Image
             │
             ▼
- Dataset Preparation
+Dataset Preparation
             │
             ▼
- YOLOv8 Training
+YOLOv8 Training
             │
             ▼
- Trained Model (finalbest.pt)
+Trained Model (finalbest.pt)
             │
             ▼
- Prediction
+Object Detection
             │
             ▼
- Detected Components
+Component Counting
             │
             ▼
- Annotated Output Image
+Annotated Output Image
 ```
 
 ---
 
-## 📸 Sample Output
+## 📸 Sample Result
 
-Input image:
+### Input
 
 ```
 custom_test/image.png
 ```
 
-Output image:
+### Output
+
+The model generates an annotated image:
 
 ```
 yolo_output.png
 ```
 
-(Add screenshots here after uploading.)
+Example prediction:
+
+| Component | Count |
+|----------|------:|
+| Bolt | 0 |
+| Nut | 1 |
+| Washer | 0 |
+| Locating Pin | 0 |
 
 ---
 
-## 📈 Future Improvements
+## 💡 Future Improvements
 
 - Real-time webcam detection
-- Confidence threshold tuning
 - ONNX/TensorRT deployment
-- Integration with CAD inspection systems
-- Web application for inference
+- Integration with CAD inspection software
+- Confidence threshold optimization
+- Support for additional mechanical components
 
 ---
 
@@ -184,6 +210,10 @@ Kumaraguru College of Technology
 
 GitHub: https://github.com/poojapandian6
 
+LinkedIn: *(Add your LinkedIn profile URL here)*
+
+---
+
 ## 📜 License
 
-This project is released under the MIT License.
+This project is licensed under the MIT License.
