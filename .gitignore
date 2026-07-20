@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+
+runs/
+outputs/
+
+*.jpg
+*.jpeg
+
+!yolo_output.png
+
+.DS_Store
